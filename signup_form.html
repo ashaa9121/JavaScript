@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <title>Signup Form</title>
+        <style>
+            body
+            {
+                background-color:#e6f2ff;
+            }
+            .container
+            {
+                border: 1px solid black;
+                margin-top: 100px;
+                width:500px;
+                height:475px;
+            }
+            .display3
+            {
+                text-align: center;
+                font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            }
+            .submit
+            {
+               margin-left: 185px;   
+            }
+            .error
+            {
+                color:red;
+            }
+        </style>
+    </head>
+    <body>
+     <div class="container">
+         <div class="row">
+             <div class="col-md-12 inner_div">
+                 <h3 class="display3"> <u>SIGN UP</u> </h3>
+                 
+                 <form name="signup_form">
+
+                    <div class="form-group">
+                       <label>Name</label>
+                       <input type="text" name="name" class="form-control" id="name" placeholder="Enter your name"> 
+                       <span id="name_span" class="error"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="number" class="form-control" name="phone" id="phone" placeholder="Enter your phone number">
+                        <span id="phone_span" class="error"></span>
+                    </div>
+
+                    <div class="form-group">
+                      <label>Email</label>
+                      <input type="email" class="form-control" name="email" id="email" placeholder="Enter your email"> 
+                      <span id="email_span" class="error"></span>
+                    </div>
+
+                    <div class="form-group">
+                      <label>Password</label>
+                      <input type="password" class="form-control" name="password" id="password" placeholder="Password">
+                      <span id="password_span" class="error"></span>
+                    </div>
+                    
+                    <input type="submit" class="btn btn-primary submit" onclick="form_validation(); return false;">
+                  </form>
+             </div>
+         </div>
+     </div>
+     <script>
+         function form_validation()
+         {
+            //alert("hi");
+            var name = document.signup_form.name.value;
+            var phone = document.signup_form.phone.value;
+            var email = document.signup_form.email.value;
+            var password = document.signup_form.password.value;
+        
+            //name validation......
+            if(name == '')
+            {
+                document.getElementById("name_span").innerHTML = "Please enter your name";
+                
+            }
+            else if(name.length < 3)
+            {
+                document.getElementById("name_span").innerHTML = "Name is too short";
+            }
+            else
+            {
+                var regex = /^[a-zA-Z\s]+$/;  
+                if(regex.test(name) === false)
+                {
+                    document.getElementById("name_span").innerHTML = "Please enter a valid name";
+                }
+                else
+                {
+                    document.getElementById("name_span").innerHTML = " ";
+                }
+            }
+            
+            //phone number validation.....
+            if(phone == '')
+            {
+                document.getElementById("phone_span").innerHTML = "Please enter your phone number";
+            }
+            else
+            {
+                if(phone.length <10)
+                {
+                    document.getElementById("phone_span").innerHTML = "Phone number should be minimum 10 numbers";
+                }
+                else
+                {
+                    document.getElementById("phone_span").innerHTML = " ";
+                }
+            }
+
+            //email validation......
+            if(email =='')
+            {
+                document.getElementById("email_span").innerHTML = "Please enter your email id";
+            }
+            else
+            {
+                 
+                 var regex = /^\S+@\S+\.\S+$/;
+                 if(regex.test(email) === false)
+                 {
+                     document.getElementById("email_span").innerHTML = "Please enter valid email address";
+                 }
+                 else
+                 {
+                     document.getElementById("email_span").innerHTML = " ";
+                 }
+            }
+
+            //password validation.....
+            if(password =='')
+            {
+                document.getElementById("password_span").innerHTML = "Please enter your password";
+            }
+            else
+            {
+                if(password.length<6)
+                {
+                    document.getElementById("password_span").innerHTML = "Password is too short";
+                }
+                else
+                {
+                    document.getElementById("password_span").innerHTML = " ";
+                }
+            }
+         }
+     </script>
+    </body>
+</html>
